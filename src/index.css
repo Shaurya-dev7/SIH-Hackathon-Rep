@@ -1,0 +1,115 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Utility classes mapped to CSS variables for consistent theming */
+.interactive-hover {
+  transition: transform .2s ease;
+}
+.interactive-hover:hover {
+  transform: scale(1.02);
+}
+
+.button-hover {
+  transition: all .25s ease;
+}
+.button-hover:hover {
+  filter: brightness(1.05);
+  transform: scale(0.995);
+}
+
+.nav-link {
+  transition: color .25s ease;
+}
+
+/* Semantic color and background helpers */
+.bg-card { background-color: hsl(var(--card)); }
+.card-foreground { color: hsl(var(--card-foreground)); }
+.bg-popover { background-color: hsl(var(--popover)); }
+.text-foreground { color: hsl(var(--foreground)); }
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.border-border { border-color: hsl(var(--border)); }
+.bg-accent { background-color: hsl(var(--accent)); }
+.text-accent-foreground { color: hsl(var(--accent-foreground)); }
+
+/* Gradients */
+.bg-gradient-cta { background-image: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent))); }
+.bg-gradient-card { background-image: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.3)); }
+.bg-gradient-icon { background-image: linear-gradient(135deg, rgba(0,0,0,0.08), rgba(255,255,255,0.04)); }
+
+/* Ensure card backgrounds adapt in dark mode */
+.dark .bg-card { background-color: hsl(var(--card)); }
+.dark .bg-gradient-card { background-image: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)); }
+
+/* Shadows */
+.shadow-card { box-shadow: 0 6px 18px rgba(16,24,40,0.06); }
+.shadow-card-hover { box-shadow: 0 14px 30px rgba(16,24,40,0.12); }
+
+/* Small helpers */
+.transition-smooth { transition: all .2s ease; }
+.rounded-2xl { border-radius: 1rem; }
+
+@layer base {
+  * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+  }
+
+  :root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%; /* black text in light mode */
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 0%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 0%;
+  --primary: 220 100% 56%; /* blue for buttons in light mode */
+  --primary-foreground: 0 0% 100%; /* white text/icons on blue buttons */
+  --icon: 0 0% 0%; /* black icons in light mode */
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 0 0% 0%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215 25% 27%;  /* Darker text for better readability */
+  --accent: 220 100% 56%; /* blue accent for search button */
+  --accent-foreground: 0 0% 100%; /* white text/icons on accent */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --hover-transform: scale(1.02);
+  --ring: 220 100% 56%;
+  --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 0 0% 100%; /* white text in dark mode */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 100%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%; /* white buttons in dark mode */
+    --primary-foreground: 0 0% 0%; /* black text/icons on white buttons */
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 0 0% 100%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
